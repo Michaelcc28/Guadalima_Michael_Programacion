@@ -7,9 +7,9 @@ int main(){
     system ("cls \n");
     char h[20], g[20], j[20];
     int i=1;
-    cout<<"Ingrese una cadena de numeros o letras\n";
+    cout<<"Inserte una cadena de digitos o letras\n";
     cin.getline(g,20,'\n');
-    cout<<"Se ingreso la cadena: "<<g<<"\n";
+    cout<<"Se coloco la cadena: "<<g<<"\n";
     h[0]=g[0];
     h[1]='\0';
     while (g[i]!='\0')
