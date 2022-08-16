@@ -1,32 +1,90 @@
 #include <iostream>
-#include <conio.h>
-#include <string.h>
+#include <ctype.h>
+#include <string>
 using namespace std;
 
-int main(){
-    system ("cls \n");
-    char h[20], g[20], j[20];
-    int i=1;
-    cout<<"Inserte una cadena de digitos o letras\n";
-    cin.getline(g,20,'\n');
-    cout<<"Se coloco la cadena: "<<g<<"\n";
-    h[0]=g[0];
-    h[1]='\0';
-    while (g[i]!='\0')
-    {
-        j[i-1]=g[i];
-        i++;
-    }
-    strupr(h);
-    strcat(h,j);
+void numericosstring(string &ca){
+int ncaracteres=ca.size();
+int numero=stoi(ca);
+if (ncaracteres%numero==0){
+    cout<<"El numero de caracteres: "<<ncaracteres<<" es divisible para: "<<numero<<"\n";
+}
+else{
+cout<<"El numero de caracteres: "<<ncaracteres<<" no es divisible para: "<<numero<<"\n";
+}
+}
 
-    cout<<"El resultado de la cadena es: "<<h<<"\n";
-     string mars=" ";
-      for(int i=0;i<mars.length();i++){
-        if((mars[i]!=' ' && h[i+1]!=' ')){
-            i=+1;
-        }
+void alfabeticosstring(string &cad){
+for (int i = 0; i < cad.length(); i++){
+     if (i==0){
+     cad[0]=toupper(cad[0]);
+     cout<<cad[0];
+     }
+    if (isblank(cad[i])){
+    cout<<" ";
+    cad[i+1]=toupper(cad[i+1]);
+    cout<<cad[i+1];
     }
-    cout<< "Existen "<<i<<" Elementos";
-    return 0;
+    else{
+    cout<<cad[i+1];
+    }
+}
+}
+
+void alfanumerico(string &cade){
+int a=0, b=0;
+for (int i = 0; i < cade.size(); i++){
+    if (!isdigit(cade[i])){
+    cout<<"Alfabetico: "<<cade[i]<<"\n";
+    a++;
+    }
+    else{
+    cout<<"numerico: "<<cade[i]<<"\n";
+    b++;
+    }
+}
+cout<<"Hay "<<a<<" caracteres alfabeticos \n";
+cout<<"Hay "<<b<<" caracteres numericos \n";
+
+}
+main(){
+string  caden;
+int a=0, b=0, c=0;
+cout<<"Ingrese una cadena: ";
+getline (cin,caden);
+cout<<"La cadena ingresada es: "<<caden<<"\n";
+
+for (int i = 0; i < caden.size(); i++){
+    if (!isdigit(caden[i])){
+    a++;
+    if (a==caden.size()){
+          c=1;
+          }
+          else{
+          c=3;
+          }
+    }
+    else{
+         b++;
+            if (b==caden.size()){
+            c=2;
+            }
+            else{
+            c=3;
+            }
+    }
+}
+
+if (c==1){
+    cout<<"la cadena es tipo alfabetico \n";
+    alfabeticosstring(caden);
+}
+else if (c==2){
+    cout<<"la cadena es tipo numerico \n";
+   numericosstring(caden);
+}
+else{
+    cout<<"la cadena es tipo alfanumerico \n";
+    alfanumerico(caden);
+}
 }
